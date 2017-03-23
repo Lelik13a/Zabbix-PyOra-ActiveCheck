@@ -42,7 +42,7 @@ GRANT SELECT ON V_$EVENT_NAME TO ZABBIX;
 GRANT SELECT ON V_$RECOVERY_FILE_DEST TO ZABBIX;
 </code></pre>
 
-2. Create zabbix api user with read permissions on group where databases hosts will be.
+2. Create zabbix api user with read permissions on group, where databases hosts will be.
 
 3. Install on the host from which the checks will be performed:
 
@@ -56,7 +56,7 @@ GRANT SELECT ON V_$RECOVERY_FILE_DEST TO ZABBIX;
 
 4. Copy externalscripts/* to /usr/lib/zabbix/externalscripts/
 
-5. 
+5. Set scripts mode bits:
 <pre><code>
 chmod 755 /usr/lib/zabbix/externalscripts/pyora-active.py /usr/lib/zabbix/externalscripts/pyora-discovery.py /usr/lib/zabbix/externalscripts/pyora-items-list.py
 </code></pre>
@@ -71,7 +71,9 @@ mkdir /usr/lib/zabbix/cache
 chown zabbix:zabbix /usr/lib/zabbix/cache
 </code></pre>
 
-9. Create via zabbix web interface host, from which the checks will be performed.
+9. Import to zabbix "Template Pyora active send".
+
+10. Create via zabbix web interface host, from which the checks will be performed.
 
 Fill macros:
 
@@ -85,7 +87,7 @@ Fill macros:
 
 Link "Template Pyora active send" to this host.
 
-10. Create cron job with databases parameters, like:
+11. Create cron job with databases parameters, like:
 <pre><code>
 */10 * * * * zabbix /usr/lib/zabbix/externalscripts/pyora-active.py  --address database_address --database database_SID
 </code></pre>
@@ -93,6 +95,7 @@ Link "Template Pyora active send" to this host.
 
 Usage and tests
 =================
+<pre><code>
 
 # Show the tablespaces names in a JSON format
 
@@ -126,7 +129,6 @@ optional arguments:
 
 pyora-active.py  --address 10.0.0.1 --database SID  -v
 
-<pre><code>
 Processing: uptime
                         883231
 Data to send:
