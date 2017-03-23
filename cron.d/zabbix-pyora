@@ -1,0 +1,3 @@
+# Run pyora active checks every 10 minutes
+*/10 * * * * zabbix /usr/lib/zabbix/externalscripts/pyora-active.py  --address IP --database DB
+
