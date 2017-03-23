@@ -93,22 +93,19 @@ Link "Template Pyora active send" to this host.
 </code></pre>
 
 
+12. Configure needed template and hosts items 
+
 Usage and tests
 =================
 <pre><code>
-
 # Show the tablespaces names in a JSON format
-
 pyora-discovery.py --address db_address --database db_SID show_tablespaces
 
-
 # Create items list for database "SID" with address "10.0.0.1". Zabbix host "SID on db_host" and zabbix API user/password: DBmonitor/pass
-
 pyora-items-list.py  --zabbixurl http://zabbix.core.kran --zabbixuser "DBmonitor" --zabbixpassword "pass" --hostname "SID on db_host" --address "10.0.0.1" --database "SID"
 
 
 # pyora-active.py -h
-
 pyora-active.py [-h] --address ADDRESS --database DATABASE
                        [--username USERNAME] [--password PASSWORD]
                        [--port PORT] [--ora1000] [--verbose]
@@ -126,7 +123,6 @@ optional arguments:
 
 
 # Perform checks by items list and print additional verbose information for every check
-
 pyora-active.py  --address 10.0.0.1 --database SID  -v
 
 Processing: uptime
@@ -142,7 +138,5 @@ Data to send:
 [{"host": "SID on db_host", "value": "Oracle Database 11g Release 11.2.0.4.0 - 64bit Production", "key": "version"}]
 {"failed": 0, "chunk": 1, "total": 1, "processed": 1, "time": "0.000045"}
 </code></pre>
-
-
 
 
