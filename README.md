@@ -1,12 +1,18 @@
 # Description
 Oracle database monitoring through Zabbix.
-Basied on https://github.com/bicofino/Pyora
+
+Based on https://github.com/bicofino/Pyora
+
 
 Scripts checks database's parameters and send data to zabbix server.
 
+
 pyora-discovery.py performs discovery databases asm volumes, tablespaces and users.
+
 pyora-items-list.py gets items list from zabbix server that will be checked and creates item list file.
+
 pyora-active.py performs requests to oracle database and sends report to zabbix server.
+
 pyora_config.py contains zabbix login and password to oracle database. Its included in scripts.
 
 # Dependencies
