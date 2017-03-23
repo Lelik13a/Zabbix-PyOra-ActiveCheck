@@ -5,7 +5,7 @@ Based on https://github.com/bicofino/Pyora
 
 
 Scripts checks database's parameters and send data to zabbix server.
-=============
+---------------------
 
 **pyora-discovery.py** performs discovery databases asm volumes, tablespaces and users.
 
