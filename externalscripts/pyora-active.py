@@ -610,7 +610,7 @@ class Main(Checks):
         parser.add_argument(
             '--ora1000',
             action='store_true',
-            help="recconnect to Oracle database when request tablespace's size (bug 17897511)"
+            help="reconnect to Oracle database when request tablespace's size (bug 17897511)"
         )
         parser.add_argument(
             '--verbose',
