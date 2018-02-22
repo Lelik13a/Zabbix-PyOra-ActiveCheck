@@ -1,5 +1,5 @@
 #!/usr/bin/python
-from zabbix.api import ZabbixAPI
+from pyzabbix import ZabbixAPI
 import argparse
 import sys
 
