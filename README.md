@@ -48,7 +48,7 @@ GRANT SELECT ON V_$EVENT_NAME TO ZABBIX;
 GRANT SELECT ON V_$RECOVERY_FILE_DEST TO ZABBIX;
 </code></pre>
 
-2. Create zabbix api user with read permissions on group, where databases hosts will be.
+2. Create zabbix api user in web-interface with read permissions on group, where databases hosts will be.
 
 3. Install on the host from which the checks will be performed:
 
@@ -108,7 +108,7 @@ Usage and tests
 pyora-discovery.py --address db_address --database db_SID show_tablespaces
 
 # Create items list for database "SID" with address "10.0.0.1". Zabbix host "SID on db_host" and zabbix API user/password: DBmonitor/pass
-pyora-items-list.py  --zabbixurl http://zabbix.core.kran --zabbixuser "DBmonitor" --zabbixpassword "pass" --hostname "SID on db_host" --address "10.0.0.1" --database "SID"
+pyora-items-list.py  --zabbixurl http://zabbix.net.local --zabbixuser "DBmonitor" --zabbixpassword "pass" --hostname "SID on db_host" --address "10.0.0.1" --database "SID"
 
 
 # pyora-active.py -h
