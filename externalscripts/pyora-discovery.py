@@ -75,6 +75,7 @@ class Main(Checks):
 
         parser = argparse.ArgumentParser()
         parser.add_argument('--address')
+        parser.add_argument('--port', default=1521)
         parser.add_argument('--database')
 
         subparsers = parser.add_subparsers()
@@ -92,7 +93,7 @@ class Main(Checks):
         self.args.password = pyora_config.password
 
     def db_connect(self):
-        dsn = cx_Oracle.makedsn(self.args.address, 1521, self.args.database)
+        dsn = cx_Oracle.makedsn(self.args.address, self.args.port, self.args.database)
         self.pool = cx_Oracle.SessionPool(
             user=self.args.username,
             password=self.args.password,
