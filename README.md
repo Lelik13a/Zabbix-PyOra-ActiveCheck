@@ -1,4 +1,13 @@
 # Description
+**WARNING** Breacking changes:
+
+- Scripts updated from python2 to python3.
+
+- Changed settings file: added support sections for multiple oracle SIDs. (configparser)
+
+- Zabbix template updated from 3.2 version to 4.4 and added {$ORAPORT} macros.
+
+
 Oracle database monitoring through Zabbix.
 
 Based on https://github.com/bicofino/Pyora
@@ -13,21 +22,24 @@ Scripts checks database's parameters and send data to zabbix server.
 
 **pyora-active.py** performs requests to oracle database and sends report to zabbix server.
 
-**pyora_config.py** contains zabbix login and password to oracle database. Its included in scripts.
+**pyora_settings.ini** contains zabbix login and password to oracle database. Its included in scripts.
 
 # Dependencies
 oracle instantclient
 
 zabbix-agent
 
-python
+python 3
 
 cx-Oracle
 
 python-argparse
 
+configparser
+
 py-zabbix
 
+Tested with python 3.6.8, cx-Oracle (7.3.0), py-zabbix (1.1.7)
 
 Installation
 ============
@@ -54,7 +66,7 @@ GRANT SELECT ON V_$RECOVERY_FILE_DEST TO ZABBIX;
 
 	a. oracle instantclient
 
-	b. https://pypi.python.org/pypi/cx_Oracle/5.2.1
+	b. https://pypi.python.org/pypi/cx_Oracle
 
 	c. https://github.com/blacked/py-zabbix
 	
@@ -67,7 +79,7 @@ GRANT SELECT ON V_$RECOVERY_FILE_DEST TO ZABBIX;
 chmod 755 /usr/lib/zabbix/externalscripts/pyora-active.py /usr/lib/zabbix/externalscripts/pyora-discovery.py /usr/lib/zabbix/externalscripts/pyora-items-list.py
 </code></pre>
 
-6. Edit /usr/lib/zabbix/externalscripts/pyora_config.py
+6. Edit /usr/lib/zabbix/externalscripts/pyora_settings.ini
 
 7. Copy zabbix_agentd.d/oracle_pyora.conf to /etc/zabbix/zabbix_agentd.d/ and restart zabbix agent.
 
@@ -85,6 +97,7 @@ Fill macros:
 
 	* {$ADDRESS} - address oracle database	
 	* {$DATABASE} - databases SID
+	* {$ORAPORT} - oracle port
 	* {$ZABBIXURL} - zabbix api URL, like "http://zabbix.net.local" (needed for pyora-items-list.py script)
 	* {$ZABBIXUSER} - zabbix api user
 	* {$ZABBIXPASSWORD} - zabbix api password

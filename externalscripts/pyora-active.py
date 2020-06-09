@@ -1,6 +1,6 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # coding: utf-8
-# vim: tabstop=2 noexpandtab
+# vim: tabstop=4 shiftwidth=4 expandtab smarttab noautoindent 
 """
 	Based on:
 		https://github.com/bicofino/Pyora
@@ -17,9 +17,11 @@ import inspect
 import json
 import re
 from pyzabbix import ZabbixMetric, ZabbixSender
-import pyora_config
+from configparser import ConfigParser
+import os
 
-version = 0.2
+
+version = 0.3
 
 
 class Checks(object):
@@ -205,7 +207,7 @@ class Checks(object):
 
         self.cur.execute(sql)
         res = self.cur.fetchall()
-        print res
+        print ( res )
         for i in res:
             return i[0]
 
@@ -619,15 +621,23 @@ class Main(Checks):
             help="Additional verbose information")
 
         self.args = parser.parse_args()
+        config = ConfigParser()
+        config.read(os.path.join(os.path.dirname(__file__), 'pyora_settings.ini'))
 
         if self.args.username is None:
-            self.args.username = pyora_config.username
+            if config.has_section(self.args.database):
+               self.args.username = config.get(self.args.database, "username")
+            else:
+                self.args.username = config.get("DEFAULT", "username")
+ 
         if self.args.password is None:
-            self.args.password = pyora_config.password
+            if config.has_section(self.args.database):
+                self.args.password = config.get(self.args.database, "password")
+            else:
+                self.args.password = config.get("DEFAULT", "password")
 
     def db_connect(self):
-        dsn = cx_Oracle.makedsn(self.args.address, self.args.port,
-                                self.args.database)
+        dsn = cx_Oracle.makedsn(self.args.address, self.args.port, self.args.database)
         self.pool = cx_Oracle.SessionPool(
             user=self.args.username,
             password=self.args.password,
@@ -645,8 +655,8 @@ class Main(Checks):
     def __call__(self):
         try:
             self.db_connect()
-        except Exception, err:
-            print str(err)
+        except Exception as err:
+            print ( str(err) )
             return 1
 
         Data = []
@@ -669,37 +679,37 @@ class Main(Checks):
                     if len(key) > 1:
                         key[1] = key[1].rstrip(']')
                         if self.args.verbose:
-                            print "Processing: " + key[0] + ": " + key[1]
+                            print ( "Processing: " + key[0] + ": " + key[1] )
                         value = getattr(Checks, key[0])(self, key[1])
                         if self.args.verbose:
-                            print "\t\t\t" + str(value)
+                            print ( "\t\t\t" + str(value) )
                     else:
                         if self.args.verbose:
-                            print "Processing: " + key[0]
+                            print ( "Processing: " + key[0] )
                         value = getattr(Checks, key[0])(self)
                         if self.args.verbose:
-                            print "\t\t\t" + str(value)
+                            print ( "\t\t\t" + str(value) )
 
                     Data.append(ZabbixMetric(hostname, keyname, value))
                     if self.args.verbose:
-                        print "Data to send:"
-                        print Data
+                        print ( "Data to send:" )
+                        print ( Data )
                         result = ZabbixSender(use_config=True).send(Data)
-                        print result
-                        print "\n"
+                        print ( result )
+                        print ( "\n" )
                         Data = []
 
             if not self.args.verbose:
                 result = ZabbixSender(use_config=True).send(Data)
-                print result
+                print ( result )
                 Data = []
                 Data.append(
                     ZabbixMetric(hostname, "failedchecks", result.failed))
                 result = ZabbixSender(use_config=True).send(Data)
-                print result
+                print ( result )
 
-        except IOError, err:
-            print str(err)
+        except IOError as err:
+            print ( str(err) )
 
         finally:
             self.db_close()

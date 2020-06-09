@@ -1,4 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/python3
+# vim: tabstop=4 shiftwidth=4 expandtab smarttab noautoindent 
+
 from pyzabbix import ZabbixAPI
 import argparse
 import sys
@@ -39,5 +41,5 @@ for item in zapi.item.get(
     except IOError:
         sys.exit("Can't write to items list")
 
-print "OK"
+print ( "OK" )
 file.close()

@@ -1,10 +1,13 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # coding: utf-8
-# vim: tabstop=2 noexpandtab
+# vim: tabstop=4 shiftwidth=4 expandtab smarttab noautoindent 
 """
 	Based on: https://github.com/bicofino/Pyora
     Author: Danilo F. Chilene
 	Email:	bicofino at gmail dot com
+
+	Author: Aleksey A.
+	Email: lelik.13a at gmail dot com
 """
 
 import argparse
@@ -12,9 +15,11 @@ import cx_Oracle
 import inspect
 import json
 import re
-import pyora_config
+#import pyora_config
+from configparser import ConfigParser
+import os
 
-version = 0.2
+version = 0.3
 
 
 class Checks(object):
@@ -28,7 +33,7 @@ class Checks(object):
         for i in res:
             d = dict(zip(key, i))
             lst.append(d)
-        print json.dumps({'data': lst})
+        print ( json.dumps({'data': lst}) )
 
     def show_tablespaces_temp(self):
         """List temporary tablespace names in a JSON like
@@ -43,7 +48,7 @@ class Checks(object):
         for i in res:
             d = dict(zip(key, i))
             lst.append(d)
-        print json.dumps({'data': lst})
+        print ( json.dumps({'data': lst}) )
 
     def show_asm_volumes(self):
         """List als ASM volumes in a JSON like format for Zabbix use"""
@@ -55,7 +60,7 @@ class Checks(object):
         for i in res:
             d = dict(zip(key, i))
             lst.append(d)
-        print json.dumps({'data': lst})
+        print ( json.dumps({'data': lst}) )
 
     def show_users(self):
         """Query the list of users on the instance"""
@@ -67,7 +72,7 @@ class Checks(object):
         for i in res:
             d = dict(zip(key, i))
             lst.append(d)
-        print json.dumps({'data': lst})
+        print ( json.dumps({'data': lst}) )
 
 
 class Main(Checks):
@@ -89,8 +94,18 @@ class Main(Checks):
                     p.add_argument(argname)
                 p.set_defaults(func=method, argnames=argnames)
         self.args = parser.parse_args()
-        self.args.username = pyora_config.username
-        self.args.password = pyora_config.password
+
+        config = ConfigParser()
+        config.read(os.path.join(os.path.dirname(__file__), 'pyora_settings.ini'))
+
+#        self.args.username = pyora_config.username
+#        self.args.password = pyora_config.password
+        if config.has_section(self.args.database):
+            self.args.username = config.get(self.args.database, "username")
+            self.args.password = config.get(self.args.database, "password")
+        else:
+            self.args.username = config.get("DEFAULT", "username")
+            self.args.password = config.get("DEFAULT", "password")
 
     def db_connect(self):
         dsn = cx_Oracle.makedsn(self.args.address, self.args.port, self.args.database)
@@ -117,9 +132,9 @@ class Main(Checks):
                 return self.args.func(*callargs)
             finally:
                 self.db_close()
-        except Exception, err:
-            print 0
-            print str(err)
+        except Exception as err:
+            print ("")
+            print ( str(err) )
 
 
 if __name__ == "__main__":
