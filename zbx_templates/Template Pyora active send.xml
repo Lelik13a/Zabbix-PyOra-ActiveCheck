@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.4</version>
-    <date>2020-06-09T07:35:49Z</date>
+    <date>2020-06-10T13:31:50Z</date>
     <groups>
         <group>
             <name>Pyora</name>
@@ -33,6 +33,9 @@
                     <name>Oracle</name>
                 </application>
                 <application>
+                    <name>Oracle raw</name>
+                </application>
+                <application>
                     <name>Tablespaces</name>
                 </application>
                 <application>
@@ -41,7 +44,7 @@
             </applications>
             <items>
                 <item>
-                    <name>Oracle/Active user count on {$DATABASE}</name>
+                    <name>Active user count on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>activeusercount</key>
                     <delay>0</delay>
@@ -54,7 +57,7 @@
                     </applications>
                 </item>
                 <item>
-                    <name>Oracle/Buffer busy waits on {$DATABASE}</name>
+                    <name>Buffer busy waits on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>bufbusywaits</key>
                     <delay>0</delay>
@@ -67,7 +70,7 @@
                     </applications>
                 </item>
                 <item>
-                    <name>Oracle/Instance is active and open on {$DATABASE}</name>
+                    <name>Instance is active and open on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>check_active</key>
                     <delay>0</delay>
@@ -94,7 +97,7 @@
                     </triggers>
                 </item>
                 <item>
-                    <name>Oracle/Archive {$ARCHIVE} on {$DATABASE}</name>
+                    <name>Archive {$ARCHIVE} on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>check_archive[{$ARCHIVE}]</key>
                     <delay>0</delay>
@@ -109,7 +112,7 @@
                     </applications>
                 </item>
                 <item>
-                    <name>Oracle/User Commits on {$DATABASE}</name>
+                    <name>User Commits on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>commits</key>
                     <delay>0</delay>
@@ -128,7 +131,7 @@
                     </preprocessing>
                 </item>
                 <item>
-                    <name>Oracle/Size of all datafiles on {$DATABASE}</name>
+                    <name>Size of all datafiles on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>dbfilesize</key>
                     <delay>0</delay>
@@ -142,7 +145,7 @@
                     </applications>
                 </item>
                 <item>
-                    <name>Oracle/dbprllwrite on {$DATABASE}</name>
+                    <name>dbprllwrite on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>dbprllwrite</key>
                     <delay>0</delay>
@@ -161,7 +164,7 @@
                     </preprocessing>
                 </item>
                 <item>
-                    <name>Oracle/dbscattread on {$DATABASE}</name>
+                    <name>dbscattread on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>dbscattread</key>
                     <delay>0</delay>
@@ -174,7 +177,7 @@
                     </applications>
                 </item>
                 <item>
-                    <name>Oracle/dbseqread on {$DATABASE}</name>
+                    <name>dbseqread on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>dbseqread</key>
                     <delay>0</delay>
@@ -193,7 +196,7 @@
                     </preprocessing>
                 </item>
                 <item>
-                    <name>Oracle/Size of user data (without temp) on {$DATABASE}</name>
+                    <name>Size of user data (without temp) on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>dbsize</key>
                     <delay>0</delay>
@@ -207,7 +210,7 @@
                     </applications>
                 </item>
                 <item>
-                    <name>Oracle/dbsnglwrite {$DATABASE}</name>
+                    <name>dbsnglwrite {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>dbsnglwrite</key>
                     <delay>0</delay>
@@ -220,7 +223,7 @@
                     </applications>
                 </item>
                 <item>
-                    <name>Oracle/Deadlocks on {$DATABASE}</name>
+                    <name>Deadlocks on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>deadlocks</key>
                     <delay>0</delay>
@@ -239,7 +242,7 @@
                     </preprocessing>
                 </item>
                 <item>
-                    <name>Oracle/Directread on {$DATABASE}</name>
+                    <name>Directread on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>directread</key>
                     <delay>0</delay>
@@ -252,7 +255,7 @@
                     </applications>
                 </item>
                 <item>
-                    <name>Oracle/Disk sorts ratio on {$DATABASE}</name>
+                    <name>Disk sorts ratio on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>dsksortratio</key>
                     <delay>0</delay>
@@ -267,7 +270,7 @@
                     </applications>
                 </item>
                 <item>
-                    <name>Oracle/Enqueue on {$DATABASE}</name>
+                    <name>Enqueue on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>enqueue</key>
                     <delay>0</delay>
@@ -301,7 +304,7 @@
                     </triggers>
                 </item>
                 <item>
-                    <name>Oracle/fra_use on {$DATABASE}</name>
+                    <name>fra_use on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>fra_use</key>
                     <delay>0</delay>
@@ -324,7 +327,7 @@
                     </triggers>
                 </item>
                 <item>
-                    <name>Oracle/freebufwaits on {$DATABASE}</name>
+                    <name>freebufwaits on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>freebufwaits</key>
                     <delay>0</delay>
@@ -338,7 +341,7 @@
                     </applications>
                 </item>
                 <item>
-                    <name>Oracle/Hard parse ratio on {$DATABASE}</name>
+                    <name>Hard parse ratio on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>hparsratio</key>
                     <delay>0</delay>
@@ -353,7 +356,7 @@
                     </applications>
                 </item>
                 <item>
-                    <name>Oracle/Index fast full scans (full) on {$DATABASE}</name>
+                    <name>Index fast full scans (full) on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>indexffs</key>
                     <delay>0</delay>
@@ -372,7 +375,7 @@
                     </preprocessing>
                 </item>
                 <item>
-                    <name>Oracle/Lastapplarclog on {$DATABASE}</name>
+                    <name>Lastapplarclog on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>lastapplarclog</key>
                     <delay>0</delay>
@@ -386,7 +389,7 @@
                     </applications>
                 </item>
                 <item>
-                    <name>Oracle/Lastarclog on {$DATABASE}</name>
+                    <name>Lastarclog on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>lastarclog</key>
                     <delay>0</delay>
@@ -405,7 +408,7 @@
                     </preprocessing>
                 </item>
                 <item>
-                    <name>Oracle/Latchfree on {$DATABASE}</name>
+                    <name>Latchfree on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>latchfree</key>
                     <delay>0</delay>
@@ -418,7 +421,7 @@
                     </applications>
                 </item>
                 <item>
-                    <name>Oracle/Logfilesync on {$DATABASE}</name>
+                    <name>Logfilesync on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>logfilesync</key>
                     <delay>0</delay>
@@ -431,7 +434,7 @@
                     </applications>
                 </item>
                 <item>
-                    <name>Oracle/Logonscurrent on {$DATABASE}</name>
+                    <name>Logonscurrent on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>logonscurrent</key>
                     <delay>0</delay>
@@ -444,7 +447,7 @@
                     </applications>
                 </item>
                 <item>
-                    <name>Oracle/Logprllwrite on {$DATABASE}</name>
+                    <name>Logprllwrite on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>logprllwrite</key>
                     <delay>0</delay>
@@ -457,7 +460,7 @@
                     </applications>
                 </item>
                 <item>
-                    <name>Oracle/Logswcompletion on {$DATABASE}</name>
+                    <name>Logswcompletion on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>logswcompletion</key>
                     <delay>0</delay>
@@ -470,13 +473,14 @@
                     </applications>
                 </item>
                 <item>
-                    <name>Oracle/Netresv on {$DATABASE}</name>
+                    <name>Netresv on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>netresv</key>
                     <delay>0</delay>
                     <history>7d</history>
                     <trends>90d</trends>
-                    <units>b</units>
+                    <value_type>FLOAT</value_type>
+                    <units>Bps</units>
                     <applications>
                         <application>
                             <name>Oracle</name>
@@ -490,28 +494,86 @@
                     </preprocessing>
                 </item>
                 <item>
-                    <name>Oracle/Netroundtrips on {$DATABASE}</name>
+                    <name>Netroundtrips on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>netroundtrips</key>
                     <delay>0</delay>
                     <history>7d</history>
                     <trends>90d</trends>
+                    <value_type>FLOAT</value_type>
+                    <units>roundtrips ps</units>
                     <applications>
                         <application>
                             <name>Oracle</name>
                         </application>
                     </applications>
+                    <preprocessing>
+                        <step>
+                            <type>CHANGE_PER_SECOND</type>
+                            <params/>
+                        </step>
+                    </preprocessing>
                 </item>
                 <item>
-                    <name>Oracle/Netsent on {$DATABASE}</name>
+                    <name>Netsent on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>netsent</key>
                     <delay>0</delay>
                     <history>7d</history>
                     <trends>90d</trends>
+                    <value_type>FLOAT</value_type>
+                    <units>Bps</units>
                     <applications>
                         <application>
                             <name>Oracle</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>CHANGE_PER_SECOND</type>
+                            <params/>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>Tablespaces list raw</name>
+                    <key>pyora-discovery[{$ADDRESS},{$DATABASE},{$ORAPORT},show_tablespaces_raw]</key>
+                    <delay>20m</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <description>Tablespaces list with status</description>
+                    <applications>
+                        <application>
+                            <name>Oracle raw</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Tablespace usage raw</name>
+                    <key>pyora-discovery[{$ADDRESS},{$DATABASE},{$ORAPORT},show_tablespaces_usage_raw]</key>
+                    <delay>10m</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <description>Tablespaces usage</description>
+                    <applications>
+                        <application>
+                            <name>Oracle raw</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Users list raw</name>
+                    <key>pyora-discovery[{$ADDRESS},{$DATABASE},{$ORAPORT},show_users_raw]</key>
+                    <delay>20m</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <description>Users list with status</description>
+                    <applications>
+                        <application>
+                            <name>Oracle raw</name>
                         </application>
                     </applications>
                 </item>
@@ -536,7 +598,7 @@
                     </triggers>
                 </item>
                 <item>
-                    <name>Oracle/Query Lock on {$DATABASE}</name>
+                    <name>Query Lock on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>query_lock</key>
                     <delay>0</delay>
@@ -573,12 +635,13 @@
                         <trigger>
                             <expression>{strlen()}&gt;3</expression>
                             <name>Query Lock list on {$DATABASE} not empty</name>
+                            <status>DISABLED</status>
                             <priority>AVERAGE</priority>
                         </trigger>
                     </triggers>
                 </item>
                 <item>
-                    <name>Oracle/Query Redologs on {$DATABASE}</name>
+                    <name>Query Redologs on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>query_redologs</key>
                     <delay>0</delay>
@@ -591,7 +654,7 @@
                     </applications>
                 </item>
                 <item>
-                    <name>Oracle/Query Rollbacks on {$DATABASE}</name>
+                    <name>Query Rollbacks on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>query_rollbacks</key>
                     <delay>0</delay>
@@ -604,7 +667,7 @@
                     </applications>
                 </item>
                 <item>
-                    <name>Oracle/Query Sessions on {$DATABASE}</name>
+                    <name>Query Sessions on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>query_sessions</key>
                     <delay>0</delay>
@@ -624,7 +687,7 @@
                     </triggers>
                 </item>
                 <item>
-                    <name>Oracle/Database CPU Time Ratio on {$DATABASE}</name>
+                    <name>Database CPU Time Ratio on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>query_sysmetrics[Database_CPU_Time_Ratio]</key>
                     <delay>0</delay>
@@ -639,7 +702,7 @@
                     </applications>
                 </item>
                 <item>
-                    <name>Oracle/Database Wait Time Ratio on {$DATABASE}</name>
+                    <name>Database Wait Time Ratio on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>query_sysmetrics[Database_Wait_Time_Ratio]</key>
                     <delay>0</delay>
@@ -654,7 +717,7 @@
                     </applications>
                 </item>
                 <item>
-                    <name>Oracle/User Transaction Per Sec on {$DATABASE}</name>
+                    <name>User Transaction Per Sec on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>query_sysmetrics[User_Transaction_Per_Sec]</key>
                     <delay>0</delay>
@@ -668,7 +731,7 @@
                     </applications>
                 </item>
                 <item>
-                    <name>Oracle/Read Cache hit ratio on {$DATABASE}</name>
+                    <name>Read Cache hit ratio on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>rcachehit</key>
                     <delay>0</delay>
@@ -683,7 +746,7 @@
                     </applications>
                 </item>
                 <item>
-                    <name>Oracle/Redo Writes on {$DATABASE}</name>
+                    <name>Redo Writes on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>redowrites</key>
                     <delay>0</delay>
@@ -702,7 +765,7 @@
                     </preprocessing>
                 </item>
                 <item>
-                    <name>Oracle/Table scan rows gotten on {$DATABASE}</name>
+                    <name>Table scan rows gotten on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>tblrowsscans</key>
                     <delay>0</delay>
@@ -721,7 +784,7 @@
                     </preprocessing>
                 </item>
                 <item>
-                    <name>Oracle/Table scans (long tables) on {$DATABASE}</name>
+                    <name>Table scans (long tables) on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>tblscans</key>
                     <delay>0</delay>
@@ -740,7 +803,7 @@
                     </preprocessing>
                 </item>
                 <item>
-                    <name>Oracle/Uptime on {$DATABASE}</name>
+                    <name>Uptime on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>uptime</key>
                     <delay>0</delay>
@@ -754,7 +817,7 @@
                     </applications>
                 </item>
                 <item>
-                    <name>Oracle/Version on {$DATABASE}</name>
+                    <name>Version on {$DATABASE}</name>
                     <type>TRAP</type>
                     <key>version</key>
                     <delay>0</delay>
@@ -847,113 +910,203 @@
                 </discovery_rule>
                 <discovery_rule>
                     <name>Discovery Oracle tablespaces</name>
-                    <key>pyora-discovery[{$ADDRESS},{$DATABASE},{$ORAPORT},show_tablespaces]</key>
-                    <delay>3600</delay>
-                    <status>DISABLED</status>
-                    <filter>
-                        <conditions>
-                            <condition>
-                                <macro>{#TABLESPACE}</macro>
-                                <formulaid>A</formulaid>
-                            </condition>
-                        </conditions>
-                    </filter>
+                    <type>DEPENDENT</type>
+                    <key>tablespaces.list.raw</key>
+                    <delay>0</delay>
+                    <lifetime>3d</lifetime>
+                    <description>Create tablespaces from tablespaces list.</description>
                     <item_prototypes>
                         <item_prototype>
-                            <name>Tablespace percentual use on {#TABLESPACE}</name>
-                            <type>TRAP</type>
-                            <key>tablespace[{#TABLESPACE}]</key>
+                            <name>{#TABLESPACE} contents</name>
+                            <type>DEPENDENT</type>
+                            <key>tablespace.contents[{#TABLESPACE}]</key>
                             <delay>0</delay>
                             <history>7d</history>
-                            <trends>90d</trends>
-                            <value_type>FLOAT</value_type>
-                            <units>%</units>
-                            <applications>
-                                <application>
-                                    <name>Tablespaces</name>
-                                </application>
-                            </applications>
-                            <trigger_prototypes>
-                                <trigger_prototype>
-                                    <expression>{last()}&gt;{$HIGH}</expression>
-                                    <name>Tablespace {#TABLESPACE} used on {$DATABASE} &gt; {$HIGH} %</name>
-                                    <priority>AVERAGE</priority>
-                                </trigger_prototype>
-                            </trigger_prototypes>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Tablespace {#TABLESPACE}</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.tablespace == &quot;{#TABLESPACE}&quot;)].contents.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>pyora-discovery[{$ADDRESS},{$DATABASE},{$ORAPORT},show_tablespaces_raw]</key>
+                            </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>Tablespace free on {#TABLESPACE}</name>
-                            <type>TRAP</type>
-                            <key>tablespace_abs[{#TABLESPACE}]</key>
-                            <delay>0</delay>
-                            <history>7d</history>
-                            <trends>90d</trends>
-                            <units>bytes</units>
-                            <applications>
-                                <application>
-                                    <name>Tablespaces</name>
-                                </application>
-                            </applications>
-                        </item_prototype>
-                    </item_prototypes>
-                </discovery_rule>
-                <discovery_rule>
-                    <name>Discovery Oracle temp tablespaces</name>
-                    <key>pyora-discovery[{$ADDRESS},{$DATABASE},{$ORAPORT},show_tablespaces_temp]</key>
-                    <delay>3600</delay>
-                    <filter>
-                        <conditions>
-                            <condition>
-                                <macro>{#TABLESPACE_TEMP}</macro>
-                                <formulaid>A</formulaid>
-                            </condition>
-                        </conditions>
-                    </filter>
-                    <item_prototypes>
-                        <item_prototype>
-                            <name>Temp Tablespace Use on {#TABLESPACE_TEMP}</name>
-                            <type>TRAP</type>
-                            <key>tablespace_temp[{#TABLESPACE_TEMP}]</key>
+                            <name>{#TABLESPACE} pused</name>
+                            <type>DEPENDENT</type>
+                            <key>tablespace.pused[{#TABLESPACE}]</key>
                             <delay>0</delay>
                             <value_type>FLOAT</value_type>
                             <units>%</units>
-                            <applications>
-                                <application>
-                                    <name>Temp Tablespaces</name>
-                                </application>
-                            </applications>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Tablespace {#TABLESPACE}</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.tablespace == &quot;{#TABLESPACE}&quot;)].pused.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>pyora-discovery[{$ADDRESS},{$DATABASE},{$ORAPORT},show_tablespaces_usage_raw]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#TABLESPACE} size</name>
+                            <type>DEPENDENT</type>
+                            <key>tablespace.size[{#TABLESPACE}]</key>
+                            <delay>0</delay>
+                            <units>B</units>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Tablespace {#TABLESPACE}</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.tablespace == &quot;{#TABLESPACE}&quot;)].size.first()</params>
+                                </step>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>{$TABLESPACEBLOCKSIZE}</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>pyora-discovery[{$ADDRESS},{$DATABASE},{$ORAPORT},show_tablespaces_usage_raw]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#TABLESPACE} status</name>
+                            <type>DEPENDENT</type>
+                            <key>tablespace.status[{#TABLESPACE}]</key>
+                            <delay>0</delay>
+                            <history>7d</history>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Tablespace {#TABLESPACE}</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.tablespace == &quot;{#TABLESPACE}&quot;)].status.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>pyora-discovery[{$ADDRESS},{$DATABASE},{$ORAPORT},show_tablespaces_raw]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#TABLESPACE} used</name>
+                            <type>DEPENDENT</type>
+                            <key>tablespace.used[{#TABLESPACE}]</key>
+                            <delay>0</delay>
+                            <units>B</units>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Tablespace {#TABLESPACE}</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.tablespace == &quot;{#TABLESPACE}&quot;)].used.first()</params>
+                                </step>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>{$TABLESPACEBLOCKSIZE}</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>pyora-discovery[{$ADDRESS},{$DATABASE},{$ORAPORT},show_tablespaces_usage_raw]</key>
+                            </master_item>
                         </item_prototype>
                     </item_prototypes>
+                    <trigger_prototypes>
+                        <trigger_prototype>
+                            <expression>{Template Pyora active send:tablespace.pused[{#TABLESPACE}].last()}&gt;{$TABLESPACE.PUSED.CRIT:&quot;{#TABLESPACE}&quot;} and {Template Pyora active send:tablespace.size[{#TABLESPACE}].last()} &gt; 0 and  {Template Pyora active send:tablespace.used[{#TABLESPACE}].last()} &gt; 0</expression>
+                            <name>Tablespace {#TABLESPACE} use is crit (used &gt; {$TABLESPACE.PUSED.CRIT:&quot;{#TABLESPACE}&quot;}%}</name>
+                            <opdata>Space used: {ITEM.LASTVALUE3} of {ITEM.LASTVALUE2} ({ITEM.LASTVALUE1})</opdata>
+                            <priority>AVERAGE</priority>
+                        </trigger_prototype>
+                        <trigger_prototype>
+                            <expression>{Template Pyora active send:tablespace.pused[{#TABLESPACE}].last()}&gt;{$TABLESPACE.PUSED.WARN:&quot;{#TABLESPACE}&quot;} and {Template Pyora active send:tablespace.size[{#TABLESPACE}].last()} &gt; 0 and  {Template Pyora active send:tablespace.used[{#TABLESPACE}].last()} &gt; 0</expression>
+                            <name>Tablespace {#TABLESPACE} use is high (used &gt; {$TABLESPACE.PUSED.WARN:&quot;{#TABLESPACE}&quot;}%}</name>
+                            <opdata>Space used: {ITEM.LASTVALUE3} of {ITEM.LASTVALUE2} ({ITEM.LASTVALUE1})</opdata>
+                            <priority>WARNING</priority>
+                        </trigger_prototype>
+                    </trigger_prototypes>
+                    <master_item>
+                        <key>pyora-discovery[{$ADDRESS},{$DATABASE},{$ORAPORT},show_tablespaces_usage_raw]</key>
+                    </master_item>
+                    <lld_macro_paths>
+                        <lld_macro_path>
+                            <lld_macro>{#TABLESPACE}</lld_macro>
+                            <path>$.tablespace</path>
+                        </lld_macro_path>
+                        <lld_macro_path>
+                            <lld_macro>{#STATUS}</lld_macro>
+                            <path>$.status</path>
+                        </lld_macro_path>
+                        <lld_macro_path>
+                            <lld_macro>{#CONTENTS}</lld_macro>
+                            <path>$.contents</path>
+                        </lld_macro_path>
+                    </lld_macro_paths>
                 </discovery_rule>
                 <discovery_rule>
                     <name>Discovery Oracle users</name>
-                    <key>pyora-discovery[{$ADDRESS},{$DATABASE},{$ORAPORT},show_users]</key>
-                    <delay>3600</delay>
-                    <status>DISABLED</status>
-                    <filter>
-                        <conditions>
-                            <condition>
-                                <macro>{#DBUSER}</macro>
-                                <formulaid>A</formulaid>
-                            </condition>
-                        </conditions>
-                    </filter>
+                    <type>DEPENDENT</type>
+                    <key>users.list.raw</key>
+                    <delay>0</delay>
+                    <lifetime>3d</lifetime>
+                    <description>Create users from users list.</description>
                     <item_prototypes>
                         <item_prototype>
-                            <name>{#DBUSER} user status</name>
-                            <type>TRAP</type>
-                            <key>user_status[{#DBUSER}]</key>
+                            <name>{#USER} status</name>
+                            <type>DEPENDENT</type>
+                            <key>user.status[{#USER}]</key>
                             <delay>0</delay>
                             <trends>0</trends>
-                            <status>DISABLED</status>
-                            <value_type>TEXT</value_type>
+                            <value_type>CHAR</value_type>
                             <applications>
                                 <application>
                                     <name>Database Users</name>
                                 </application>
                             </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.user == &quot;{#USER}&quot;)].status.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>pyora-discovery[{$ADDRESS},{$DATABASE},{$ORAPORT},show_users_raw]</key>
+                            </master_item>
                         </item_prototype>
                     </item_prototypes>
+                    <master_item>
+                        <key>pyora-discovery[{$ADDRESS},{$DATABASE},{$ORAPORT},show_users_raw]</key>
+                    </master_item>
+                    <lld_macro_paths>
+                        <lld_macro_path>
+                            <lld_macro>{#USER}</lld_macro>
+                            <path>$.user</path>
+                        </lld_macro_path>
+                    </lld_macro_paths>
                 </discovery_rule>
             </discovery_rules>
             <macros>
@@ -968,12 +1121,20 @@
                     <macro>{$DATABASE}</macro>
                 </macro>
                 <macro>
-                    <macro>{$HIGH}</macro>
+                    <macro>{$ORAPORT}</macro>
+                    <value>1521</value>
+                </macro>
+                <macro>
+                    <macro>{$TABLESPACE.PUSED.CRIT}</macro>
+                    <value>90</value>
+                </macro>
+                <macro>
+                    <macro>{$TABLESPACE.PUSED.WARN}</macro>
                     <value>80</value>
                 </macro>
                 <macro>
-                    <macro>{$ORAPORT}</macro>
-                    <value>1521</value>
+                    <macro>{$TABLESPACEBLOCKSIZE}</macro>
+                    <value>8192</value>
                 </macro>
                 <macro>
                     <macro>{$ZABBIXPASSWORD}</macro>
@@ -991,6 +1152,7 @@
         <trigger>
             <expression>{Template Pyora active send:query_lock.last()}&gt;0 and {Template Pyora active send:query_lock_list2.strlen()}&gt;3</expression>
             <name>Query Lock on {$DATABASE} &gt; 1</name>
+            <status>DISABLED</status>
             <priority>AVERAGE</priority>
         </trigger>
     </triggers>

@@ -8,6 +8,7 @@
 - Zabbix template updated from 3.2 version to 4.4 and added {$ORAPORT} macros.
 
 
+
 Oracle database monitoring through Zabbix.
 
 Based on https://github.com/bicofino/Pyora
