@@ -35,6 +35,30 @@ class Checks(object):
             lst.append(d)
         print ( json.dumps({'data': lst}) )
 
+    def show_tablespaces_raw(self):
+        """List tablespace names in a JSON like format for Zabbix use"""
+        sql = "SELECT tablespace_name, status, contents FROM dba_tablespaces ORDER BY 1"
+        self.cur.execute(sql)
+        res = self.cur.fetchall()
+        key = ['tablespace', 'status', 'contents']
+        lst = []
+        for i in res:
+            d = dict(zip(key, i))
+            lst.append(d)
+        print ( json.dumps(lst) )
+    
+    def show_tablespaces_usage_raw(self):
+        """List tablespace names in a JSON like format for Zabbix use"""
+        sql = "SELECT tablespace_name, used_space, tablespace_size, used_percent FROM dba_tablespace_usage_metrics ORDER BY 1"
+        self.cur.execute(sql)
+        res = self.cur.fetchall()
+        key = ['tablespace', 'used', 'size', 'pused']
+        lst = []
+        for i in res:
+            d = dict(zip(key, i))
+            lst.append(d)
+        print ( json.dumps(lst) )
+
     def show_tablespaces_temp(self):
         """List temporary tablespace names in a JSON like
         format for Zabbix use"""
@@ -74,6 +98,18 @@ class Checks(object):
             lst.append(d)
         print ( json.dumps({'data': lst}) )
 
+    def show_users_raw(self):
+        """Query the list of users with status on the instance"""
+        sql = "SELECT username, account_status FROM dba_users ORDER BY 1"
+        self.cur.execute(sql)
+        res = self.cur.fetchall()
+        key = ['user', 'status']
+        lst = []
+        for i in res:
+            d = dict(zip(key, i))
+            lst.append(d)
+#        print ( json.dumps(lst, indent="") )
+        print ( json.dumps(lst) )
 
 class Main(Checks):
     def __init__(self):
