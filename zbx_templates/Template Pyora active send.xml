@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.4</version>
-    <date>2020-06-10T13:31:50Z</date>
+    <date>2020-06-11T07:45:25Z</date>
     <groups>
-        <group>
-            <name>Pyora</name>
-        </group>
         <group>
             <name>Templates</name>
         </group>
@@ -15,9 +12,6 @@
             <template>Template Pyora active send</template>
             <name>Template Pyora active send</name>
             <groups>
-                <group>
-                    <name>Pyora</name>
-                </group>
                 <group>
                     <name>Templates</name>
                 </group>
@@ -30,21 +24,15 @@
                     <name>Database Users</name>
                 </application>
                 <application>
-                    <name>Oracle</name>
+                    <name>Oracle, DB: {$DATABASE}</name>
                 </application>
                 <application>
                     <name>Oracle raw</name>
                 </application>
-                <application>
-                    <name>Tablespaces</name>
-                </application>
-                <application>
-                    <name>Temp Tablespaces</name>
-                </application>
             </applications>
             <items>
                 <item>
-                    <name>Active user count on {$DATABASE}</name>
+                    <name>Active user count</name>
                     <type>TRAP</type>
                     <key>activeusercount</key>
                     <delay>0</delay>
@@ -52,12 +40,12 @@
                     <trends>90d</trends>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                 </item>
                 <item>
-                    <name>Buffer busy waits on {$DATABASE}</name>
+                    <name>Buffer busy waits</name>
                     <type>TRAP</type>
                     <key>bufbusywaits</key>
                     <delay>0</delay>
@@ -65,12 +53,12 @@
                     <trends>90d</trends>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                 </item>
                 <item>
-                    <name>Instance is active and open on {$DATABASE}</name>
+                    <name>Instance is active and open</name>
                     <type>TRAP</type>
                     <key>check_active</key>
                     <delay>0</delay>
@@ -79,9 +67,15 @@
                     <value_type>CHAR</value_type>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
+                    <preprocessing>
+                        <step>
+                            <type>DISCARD_UNCHANGED_HEARTBEAT</type>
+                            <params>86400</params>
+                        </step>
+                    </preprocessing>
                     <triggers>
                         <trigger>
                             <expression>{regexp(ORA)}=1</expression>
@@ -97,7 +91,7 @@
                     </triggers>
                 </item>
                 <item>
-                    <name>Archive {$ARCHIVE} on {$DATABASE}</name>
+                    <name>Archive {$ARCHIVE}</name>
                     <type>TRAP</type>
                     <key>check_archive[{$ARCHIVE}]</key>
                     <delay>0</delay>
@@ -107,12 +101,12 @@
                     <units>%</units>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                 </item>
                 <item>
-                    <name>User Commits on {$DATABASE}</name>
+                    <name>User Commits</name>
                     <type>TRAP</type>
                     <key>commits</key>
                     <delay>0</delay>
@@ -120,7 +114,7 @@
                     <trends>90d</trends>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                     <preprocessing>
@@ -131,7 +125,7 @@
                     </preprocessing>
                 </item>
                 <item>
-                    <name>Size of all datafiles on {$DATABASE}</name>
+                    <name>Size of all datafiles</name>
                     <type>TRAP</type>
                     <key>dbfilesize</key>
                     <delay>0</delay>
@@ -140,12 +134,18 @@
                     <units>B</units>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
+                    <preprocessing>
+                        <step>
+                            <type>DISCARD_UNCHANGED_HEARTBEAT</type>
+                            <params>3600</params>
+                        </step>
+                    </preprocessing>
                 </item>
                 <item>
-                    <name>dbprllwrite on {$DATABASE}</name>
+                    <name>dbprllwrite</name>
                     <type>TRAP</type>
                     <key>dbprllwrite</key>
                     <delay>0</delay>
@@ -153,7 +153,7 @@
                     <trends>90d</trends>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                     <preprocessing>
@@ -164,7 +164,7 @@
                     </preprocessing>
                 </item>
                 <item>
-                    <name>dbscattread on {$DATABASE}</name>
+                    <name>dbscattread</name>
                     <type>TRAP</type>
                     <key>dbscattread</key>
                     <delay>0</delay>
@@ -172,12 +172,12 @@
                     <trends>90d</trends>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                 </item>
                 <item>
-                    <name>dbseqread on {$DATABASE}</name>
+                    <name>dbseqread</name>
                     <type>TRAP</type>
                     <key>dbseqread</key>
                     <delay>0</delay>
@@ -185,7 +185,7 @@
                     <trends>90d</trends>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                     <preprocessing>
@@ -196,7 +196,7 @@
                     </preprocessing>
                 </item>
                 <item>
-                    <name>Size of user data (without temp) on {$DATABASE}</name>
+                    <name>Size of user data (without temp)</name>
                     <type>TRAP</type>
                     <key>dbsize</key>
                     <delay>0</delay>
@@ -205,7 +205,7 @@
                     <units>B</units>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                 </item>
@@ -218,12 +218,12 @@
                     <trends>90d</trends>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                 </item>
                 <item>
-                    <name>Deadlocks on {$DATABASE}</name>
+                    <name>Deadlocks</name>
                     <type>TRAP</type>
                     <key>deadlocks</key>
                     <delay>0</delay>
@@ -231,7 +231,7 @@
                     <trends>90d</trends>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                     <preprocessing>
@@ -242,7 +242,7 @@
                     </preprocessing>
                 </item>
                 <item>
-                    <name>Directread on {$DATABASE}</name>
+                    <name>Directread</name>
                     <type>TRAP</type>
                     <key>directread</key>
                     <delay>0</delay>
@@ -250,12 +250,12 @@
                     <trends>90d</trends>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                 </item>
                 <item>
-                    <name>Disk sorts ratio on {$DATABASE}</name>
+                    <name>Disk sorts ratio</name>
                     <type>TRAP</type>
                     <key>dsksortratio</key>
                     <delay>0</delay>
@@ -265,12 +265,12 @@
                     <units>%</units>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                 </item>
                 <item>
-                    <name>Enqueue on {$DATABASE}</name>
+                    <name>Enqueue</name>
                     <type>TRAP</type>
                     <key>enqueue</key>
                     <delay>0</delay>
@@ -279,12 +279,12 @@
                     <status>DISABLED</status>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                 </item>
                 <item>
-                    <name>Zabbix failed checks on {$DATABASE}</name>
+                    <name>Zabbix failed checks</name>
                     <type>TRAP</type>
                     <key>failedchecks</key>
                     <delay>0</delay>
@@ -292,9 +292,15 @@
                     <trends>90d</trends>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
+                    <preprocessing>
+                        <step>
+                            <type>DISCARD_UNCHANGED_HEARTBEAT</type>
+                            <params>86400</params>
+                        </step>
+                    </preprocessing>
                     <triggers>
                         <trigger>
                             <expression>{last()}&lt;&gt;0</expression>
@@ -304,7 +310,7 @@
                     </triggers>
                 </item>
                 <item>
-                    <name>fra_use on {$DATABASE}</name>
+                    <name>fra_use</name>
                     <type>TRAP</type>
                     <key>fra_use</key>
                     <delay>0</delay>
@@ -314,7 +320,7 @@
                     <value_type>FLOAT</value_type>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                     <triggers>
@@ -327,7 +333,7 @@
                     </triggers>
                 </item>
                 <item>
-                    <name>freebufwaits on {$DATABASE}</name>
+                    <name>freebufwaits</name>
                     <type>TRAP</type>
                     <key>freebufwaits</key>
                     <delay>0</delay>
@@ -336,12 +342,12 @@
                     <status>DISABLED</status>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                 </item>
                 <item>
-                    <name>Hard parse ratio on {$DATABASE}</name>
+                    <name>Hard parse ratio</name>
                     <type>TRAP</type>
                     <key>hparsratio</key>
                     <delay>0</delay>
@@ -351,12 +357,12 @@
                     <units>%</units>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                 </item>
                 <item>
-                    <name>Index fast full scans (full) on {$DATABASE}</name>
+                    <name>Index fast full scans (full)</name>
                     <type>TRAP</type>
                     <key>indexffs</key>
                     <delay>0</delay>
@@ -364,7 +370,7 @@
                     <trends>90d</trends>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                     <preprocessing>
@@ -375,7 +381,7 @@
                     </preprocessing>
                 </item>
                 <item>
-                    <name>Lastapplarclog on {$DATABASE}</name>
+                    <name>Lastapplarclog</name>
                     <type>TRAP</type>
                     <key>lastapplarclog</key>
                     <delay>0</delay>
@@ -384,12 +390,12 @@
                     <status>DISABLED</status>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                 </item>
                 <item>
-                    <name>Lastarclog on {$DATABASE}</name>
+                    <name>Lastarclog</name>
                     <type>TRAP</type>
                     <key>lastarclog</key>
                     <delay>0</delay>
@@ -397,7 +403,7 @@
                     <trends>90d</trends>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                     <preprocessing>
@@ -408,7 +414,7 @@
                     </preprocessing>
                 </item>
                 <item>
-                    <name>Latchfree on {$DATABASE}</name>
+                    <name>Latchfree</name>
                     <type>TRAP</type>
                     <key>latchfree</key>
                     <delay>0</delay>
@@ -416,12 +422,12 @@
                     <trends>90d</trends>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                 </item>
                 <item>
-                    <name>Logfilesync on {$DATABASE}</name>
+                    <name>Logfilesync</name>
                     <type>TRAP</type>
                     <key>logfilesync</key>
                     <delay>0</delay>
@@ -429,12 +435,12 @@
                     <trends>90d</trends>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                 </item>
                 <item>
-                    <name>Logonscurrent on {$DATABASE}</name>
+                    <name>Logonscurrent</name>
                     <type>TRAP</type>
                     <key>logonscurrent</key>
                     <delay>0</delay>
@@ -442,12 +448,12 @@
                     <trends>90d</trends>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                 </item>
                 <item>
-                    <name>Logprllwrite on {$DATABASE}</name>
+                    <name>Logprllwrite</name>
                     <type>TRAP</type>
                     <key>logprllwrite</key>
                     <delay>0</delay>
@@ -455,12 +461,12 @@
                     <trends>90d</trends>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                 </item>
                 <item>
-                    <name>Logswcompletion on {$DATABASE}</name>
+                    <name>Logswcompletion</name>
                     <type>TRAP</type>
                     <key>logswcompletion</key>
                     <delay>0</delay>
@@ -468,12 +474,12 @@
                     <trends>90d</trends>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                 </item>
                 <item>
-                    <name>Netresv on {$DATABASE}</name>
+                    <name>Netresv</name>
                     <type>TRAP</type>
                     <key>netresv</key>
                     <delay>0</delay>
@@ -483,7 +489,7 @@
                     <units>Bps</units>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                     <preprocessing>
@@ -494,7 +500,7 @@
                     </preprocessing>
                 </item>
                 <item>
-                    <name>Netroundtrips on {$DATABASE}</name>
+                    <name>Netroundtrips</name>
                     <type>TRAP</type>
                     <key>netroundtrips</key>
                     <delay>0</delay>
@@ -504,7 +510,7 @@
                     <units>roundtrips ps</units>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                     <preprocessing>
@@ -515,7 +521,7 @@
                     </preprocessing>
                 </item>
                 <item>
-                    <name>Netsent on {$DATABASE}</name>
+                    <name>Netsent</name>
                     <type>TRAP</type>
                     <key>netsent</key>
                     <delay>0</delay>
@@ -525,7 +531,7 @@
                     <units>Bps</units>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                     <preprocessing>
@@ -586,9 +592,15 @@
                     <value_type>CHAR</value_type>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
+                    <preprocessing>
+                        <step>
+                            <type>DISCARD_UNCHANGED_HEARTBEAT</type>
+                            <params>86400</params>
+                        </step>
+                    </preprocessing>
                     <triggers>
                         <trigger>
                             <expression>{regexp(OK)}=0</expression>
@@ -598,7 +610,7 @@
                     </triggers>
                 </item>
                 <item>
-                    <name>Query Lock on {$DATABASE}</name>
+                    <name>Query Lock</name>
                     <type>TRAP</type>
                     <key>query_lock</key>
                     <delay>0</delay>
@@ -606,7 +618,7 @@
                     <trends>90d</trends>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                     <triggers>
@@ -619,7 +631,7 @@
                     </triggers>
                 </item>
                 <item>
-                    <name>Query Lock list on {$DATABASE}</name>
+                    <name>Query Lock list</name>
                     <type>TRAP</type>
                     <key>query_lock_list2</key>
                     <delay>0</delay>
@@ -628,7 +640,7 @@
                     <value_type>TEXT</value_type>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                     <triggers>
@@ -641,7 +653,7 @@
                     </triggers>
                 </item>
                 <item>
-                    <name>Query Redologs on {$DATABASE}</name>
+                    <name>Query Redologs</name>
                     <type>TRAP</type>
                     <key>query_redologs</key>
                     <delay>0</delay>
@@ -649,12 +661,12 @@
                     <trends>90d</trends>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                 </item>
                 <item>
-                    <name>Query Rollbacks on {$DATABASE}</name>
+                    <name>Query Rollbacks</name>
                     <type>TRAP</type>
                     <key>query_rollbacks</key>
                     <delay>0</delay>
@@ -662,12 +674,12 @@
                     <trends>90d</trends>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                 </item>
                 <item>
-                    <name>Query Sessions on {$DATABASE}</name>
+                    <name>Query Sessions</name>
                     <type>TRAP</type>
                     <key>query_sessions</key>
                     <delay>0</delay>
@@ -675,7 +687,7 @@
                     <trends>90d</trends>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                     <triggers>
@@ -687,7 +699,7 @@
                     </triggers>
                 </item>
                 <item>
-                    <name>Database CPU Time Ratio on {$DATABASE}</name>
+                    <name>Database CPU Time Ratio</name>
                     <type>TRAP</type>
                     <key>query_sysmetrics[Database_CPU_Time_Ratio]</key>
                     <delay>0</delay>
@@ -697,12 +709,12 @@
                     <units>%</units>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                 </item>
                 <item>
-                    <name>Database Wait Time Ratio on {$DATABASE}</name>
+                    <name>Database Wait Time Ratio</name>
                     <type>TRAP</type>
                     <key>query_sysmetrics[Database_Wait_Time_Ratio]</key>
                     <delay>0</delay>
@@ -712,12 +724,12 @@
                     <units>%</units>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                 </item>
                 <item>
-                    <name>User Transaction Per Sec on {$DATABASE}</name>
+                    <name>User Transaction Per Sec</name>
                     <type>TRAP</type>
                     <key>query_sysmetrics[User_Transaction_Per_Sec]</key>
                     <delay>0</delay>
@@ -726,12 +738,12 @@
                     <value_type>FLOAT</value_type>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                 </item>
                 <item>
-                    <name>Read Cache hit ratio on {$DATABASE}</name>
+                    <name>Read Cache hit ratio</name>
                     <type>TRAP</type>
                     <key>rcachehit</key>
                     <delay>0</delay>
@@ -741,12 +753,12 @@
                     <units>%</units>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                 </item>
                 <item>
-                    <name>Redo Writes on {$DATABASE}</name>
+                    <name>Redo Writes</name>
                     <type>TRAP</type>
                     <key>redowrites</key>
                     <delay>0</delay>
@@ -754,7 +766,7 @@
                     <trends>90d</trends>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                     <preprocessing>
@@ -765,7 +777,7 @@
                     </preprocessing>
                 </item>
                 <item>
-                    <name>Table scan rows gotten on {$DATABASE}</name>
+                    <name>Table scan rows gotten</name>
                     <type>TRAP</type>
                     <key>tblrowsscans</key>
                     <delay>0</delay>
@@ -773,7 +785,7 @@
                     <trends>90d</trends>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                     <preprocessing>
@@ -784,7 +796,7 @@
                     </preprocessing>
                 </item>
                 <item>
-                    <name>Table scans (long tables) on {$DATABASE}</name>
+                    <name>Table scans (long tables)</name>
                     <type>TRAP</type>
                     <key>tblscans</key>
                     <delay>0</delay>
@@ -792,7 +804,7 @@
                     <trends>90d</trends>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                     <preprocessing>
@@ -803,7 +815,7 @@
                     </preprocessing>
                 </item>
                 <item>
-                    <name>Uptime on {$DATABASE}</name>
+                    <name>Uptime</name>
                     <type>TRAP</type>
                     <key>uptime</key>
                     <delay>0</delay>
@@ -812,12 +824,12 @@
                     <units>s</units>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
                 </item>
                 <item>
-                    <name>Version on {$DATABASE}</name>
+                    <name>Version</name>
                     <type>TRAP</type>
                     <key>version</key>
                     <delay>0</delay>
@@ -825,9 +837,15 @@
                     <value_type>CHAR</value_type>
                     <applications>
                         <application>
-                            <name>Oracle</name>
+                            <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
+                    <preprocessing>
+                        <step>
+                            <type>DISCARD_UNCHANGED</type>
+                            <params/>
+                        </step>
+                    </preprocessing>
                 </item>
             </items>
             <discovery_rules>
@@ -981,6 +999,10 @@
                                     <type>MULTIPLIER</type>
                                     <params>{$TABLESPACEBLOCKSIZE}</params>
                                 </step>
+                                <step>
+                                    <type>DISCARD_UNCHANGED_HEARTBEAT</type>
+                                    <params>86400</params>
+                                </step>
                             </preprocessing>
                             <master_item>
                                 <key>pyora-discovery[{$ADDRESS},{$DATABASE},{$ORAPORT},show_tablespaces_usage_raw]</key>
@@ -1003,6 +1025,10 @@
                                 <step>
                                     <type>JSONPATH</type>
                                     <params>$.[?(@.tablespace == &quot;{#TABLESPACE}&quot;)].status.first()</params>
+                                </step>
+                                <step>
+                                    <type>DISCARD_UNCHANGED_HEARTBEAT</type>
+                                    <params>10800</params>
                                 </step>
                             </preprocessing>
                             <master_item>
@@ -1092,6 +1118,10 @@
                                     <type>JSONPATH</type>
                                     <params>$.[?(@.user == &quot;{#USER}&quot;)].status.first()</params>
                                 </step>
+                                <step>
+                                    <type>DISCARD_UNCHANGED_HEARTBEAT</type>
+                                    <params>3600</params>
+                                </step>
                             </preprocessing>
                             <master_item>
                                 <key>pyora-discovery[{$ADDRESS},{$DATABASE},{$ORAPORT},show_users_raw]</key>
@@ -1156,4 +1186,30 @@
             <priority>AVERAGE</priority>
         </trigger>
     </triggers>
+    <graphs>
+        <graph>
+            <name>Oracle data flow</name>
+            <graph_items>
+                <graph_item>
+                    <drawtype>GRADIENT_LINE</drawtype>
+                    <color>199C0D</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Template Pyora active send</host>
+                        <key>netresv</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>GRADIENT_LINE</drawtype>
+                    <color>0040FF</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Template Pyora active send</host>
+                        <key>netsent</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+    </graphs>
 </zabbix_export>
