@@ -17,13 +17,18 @@ Based on https://github.com/bicofino/Pyora
 Scripts checks database's parameters and send data to zabbix server.
 
 
-**pyora-discovery.py** performs discovery databases asm volumes, tablespaces and users.
+- **pyora-discovery.py** performs discovery databases asm volumes, tablespaces and users.
 
-**pyora-items-list.py** gets items list from zabbix server that will be checked and creates item list file.
+- **pyora-items-list.py** gets items list from zabbix server that will be checked and creates item list file.
 
-**pyora-active.py** performs requests to oracle database and sends report to zabbix server.
+- **pyora-active.py** performs requests to oracle database and sends report to zabbix server.
 
-**pyora_settings.ini** contains zabbix login and password to oracle database. Its included in scripts.
+- **pyora_settings.ini** contains zabbix login and password to oracle database. Its included in scripts.
+
+In script **pyora-active.py** you can add your own checks. And work in active mode does not limit them to execution time.
+
+![pyora](https://user-images.githubusercontent.com/12905969/84361875-8632c480-abf6-11ea-8071-06b1fee3cd54.png)
+
 
 # Dependencies
 oracle instantclient
