@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.4</version>
-    <date>2020-06-11T07:45:25Z</date>
+    <date>2020-06-18T03:37:03Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -70,12 +70,6 @@
                             <name>Oracle, DB: {$DATABASE}</name>
                         </application>
                     </applications>
-                    <preprocessing>
-                        <step>
-                            <type>DISCARD_UNCHANGED_HEARTBEAT</type>
-                            <params>86400</params>
-                        </step>
-                    </preprocessing>
                     <triggers>
                         <trigger>
                             <expression>{regexp(ORA)}=1</expression>
@@ -84,7 +78,7 @@
                             <description>Contact DBA.</description>
                         </trigger>
                         <trigger>
-                            <expression>{nodata(800)}=1</expression>
+                            <expression>{nodata(1200)}=1</expression>
                             <name>Database {$DATABASE} is not responding</name>
                             <priority>HIGH</priority>
                         </trigger>
@@ -625,7 +619,6 @@
                         <trigger>
                             <expression>{last(0)}&gt;0</expression>
                             <name>Query Lock on {$DATABASE} &gt; 1</name>
-                            <status>DISABLED</status>
                             <priority>AVERAGE</priority>
                         </trigger>
                     </triggers>
@@ -692,8 +685,8 @@
                     </applications>
                     <triggers>
                         <trigger>
-                            <expression>{last(0)}&gt;250</expression>
-                            <name>Query Sessions on {$DATABASE} &gt; 250</name>
+                            <expression>{last(0)} &gt; {$QUERY.SESSIONS.WARN}</expression>
+                            <name>Query Sessions on {$DATABASE} &gt; {$QUERY.SESSIONS.WARN}</name>
                             <priority>AVERAGE</priority>
                         </trigger>
                     </triggers>
@@ -1126,6 +1119,14 @@
                             <master_item>
                                 <key>pyora-discovery[{$ADDRESS},{$DATABASE},{$ORAPORT},show_users_raw]</key>
                             </master_item>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{diff()}&lt;&gt;0</expression>
+                                    <name>User {#USER} status changed</name>
+                                    <priority>WARNING</priority>
+                                    <manual_close>YES</manual_close>
+                                </trigger_prototype>
+                            </trigger_prototypes>
                         </item_prototype>
                     </item_prototypes>
                     <master_item>
@@ -1153,6 +1154,10 @@
                 <macro>
                     <macro>{$ORAPORT}</macro>
                     <value>1521</value>
+                </macro>
+                <macro>
+                    <macro>{$QUERY.SESSIONS.WARN}</macro>
+                    <value>50</value>
                 </macro>
                 <macro>
                     <macro>{$TABLESPACE.PUSED.CRIT}</macro>
